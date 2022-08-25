@@ -1,5 +1,5 @@
 
-const createCategories = (sequelize, DataTypes) => {
+const createCategory= (sequelize, DataTypes) => {
     const Category = sequelize.define('Category', {
       id: {
         type: DataTypes.INTEGER,
@@ -15,4 +15,4 @@ const createCategories = (sequelize, DataTypes) => {
   
   }
   
-  module.exports = createCategories
+  module.exports = createCategory
