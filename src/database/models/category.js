@@ -3,7 +3,8 @@ const createCategory= (sequelize, DataTypes) => {
     const Category = sequelize.define('Category', {
       id: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement:true,
       } ,
       name: DataTypes.STRING,
     }, {
@@ -11,6 +12,7 @@ const createCategory= (sequelize, DataTypes) => {
       timestamps: false,
     });
   
+
   return Category
   
   }
