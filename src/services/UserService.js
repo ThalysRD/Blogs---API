@@ -24,4 +24,11 @@ const registerUser = async ({ displayName, email, password, image }) => {
         return false;
 };
 
-module.exports = { login, registerUser };
+const getAll = async () => {
+  const result = await User.findAll(); 
+  const newOjb = result.map(({ id, displayName, email, image }) => 
+  ({ id, displayName, email, image }));
+  return newOjb;
+};
+
+module.exports = { login, registerUser, getAll };
