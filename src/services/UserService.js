@@ -14,4 +14,14 @@ const login = async ({ email, password }) => {
     return token;
 };
 
-module.exports = { login };
+const registerUser = async ({ displayName, email, password, image }) => {
+    const ifExist = await User.findOne({ where: { email } });
+    if (ifExist === null) {
+     await User.create({ displayName, email, password, image });
+     const token = jwt.sign({ name: displayName }, secret, { algorithm: 'HS256', expiresIn: '1d' });
+       return token;
+    } 
+        return false;
+};
+
+module.exports = { login, registerUser };
