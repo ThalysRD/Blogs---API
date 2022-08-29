@@ -31,4 +31,14 @@ const getAll = async () => {
   return newOjb;
 };
 
-module.exports = { login, registerUser, getAll };
+const getById = async ({ id }) => {
+ try {
+    const result = await User.findByPk(id);
+    delete result.dataValues.password;
+   return result;
+ } catch (e) {
+    return false;
+ }
+};
+
+module.exports = { login, registerUser, getAll, getById };
