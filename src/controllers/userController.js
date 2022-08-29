@@ -17,8 +17,19 @@ const registerUser = async (req, res) => {
     res.status(201).json({ token: result });
 };
 
-const getAll = async (req, res) => {
+const getAll = async (_req, res) => {
     const result = await userService.getAll();
     return res.status(200).json(result);
 };
-module.exports = { login, registerUser, getAll };
+
+const getById = async (req, res) => {
+    const data = req.params;
+    const result = await userService.getById(data);
+    if (result === false) {
+        return res.status(404).json({
+            message: 'User does not exist',
+          });
+    }
+    res.status(200).json(result);
+};
+module.exports = { login, registerUser, getAll, getById };
