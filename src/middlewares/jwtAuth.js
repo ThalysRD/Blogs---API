@@ -11,6 +11,6 @@ module.exports = (req, res, next) => {
     if (data.message !== undefined) {
         return res.status(401).json({ message: data.message });
     }
-    req.name = data;
+    req.id = data;
     next();
 };
