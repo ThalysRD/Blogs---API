@@ -8,6 +8,7 @@ const app = express();
 app.use(express.json());
 app.use('/', routes.usersRoute);
 app.use('/', routes.categoriesRoute);
+app.use('/', routes.postsRoute);
 
 // ...
 
