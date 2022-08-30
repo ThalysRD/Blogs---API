@@ -6,15 +6,15 @@ const login = async ({ email, password }) => {
     if (result === null) {
        return result;
     }
-     const token = generateToken(result.displayName);
+     const token = generateToken(result.dataValues.id);
     return token;
 };
 
 const registerUser = async ({ displayName, email, password, image }) => {
     const ifExist = await User.findOne({ where: { email } });
     if (ifExist === null) {
-     await User.create({ displayName, email, password, image });
-     const token = generateToken(displayName);
+     const newUser = await User.create({ displayName, email, password, image });
+     const token = generateToken(newUser.dataValues.id);
        return token;
     } 
         return false;
